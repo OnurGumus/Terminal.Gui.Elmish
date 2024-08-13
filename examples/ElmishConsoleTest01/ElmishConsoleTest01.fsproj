@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup />
- 
+
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Terminal.Gui.Elmish\Terminal.Gui.Elmish.fsproj" />    
+    <ProjectReference Include="..\..\src\Terminal.Gui.Elmish\Terminal.Gui.Elmish.fsproj" />
   </ItemGroup>
 </Project>

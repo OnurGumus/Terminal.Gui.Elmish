@@ -3,7 +3,7 @@
 open System
 open Terminal.Gui.Elmish
 
-type Pages = 
+type Pages =
     | Start
     | Counter
     | TextFields
@@ -30,7 +30,7 @@ type Model = {
 }
 
 
-type Msg = 
+type Msg =
     | ChangePage of Pages
     | ExitApp
 
@@ -242,8 +242,8 @@ let update (msg:Msg) (model:Model) =
 
 
 
-        
-        
+
+
 
 let view (model:Model) (dispatch:Msg->unit) =
     View.page [
@@ -272,7 +272,7 @@ let view (model:Model) (dispatch:Msg->unit) =
                 ]
             ]
         ]
-        
+
         prop.children [
             View.window [
                 prop.position.x.at 0
@@ -300,46 +300,46 @@ let view (model:Model) (dispatch:Msg->unit) =
                                 prop.position.y.at 2
                                 button.text "Counter"
                                 button.onClick (fun () -> dispatch (ChangePage Counter))
-                            ] 
+                            ]
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 3
                                 button.text "TextFields"
                                 button.onClick (fun () -> dispatch (ChangePage TextFields))
-                            ] 
+                            ]
 
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 4
                                 button.text "Radio and Check"
                                 button.onClick (fun () -> dispatch (ChangePage RadioCheck))
-                            ] 
+                            ]
 
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 5
                                 button.text "Text File View"
                                 button.onClick (fun () -> dispatch (ChangePage TextView))
-                            ] 
+                            ]
 
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 6
                                 button.text "List View"
                                 button.onClick (fun () -> dispatch (ChangePage ListView))
-                            ]                
+                            ]
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 7
                                 button.text "Scroll View"
                                 button.onClick (fun () -> dispatch (ChangePage ScrollView))
-                            ] 
+                            ]
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 8
                                 button.text "Message Boxes"
                                 button.onClick (fun () -> dispatch (ChangePage MessageBoxes))
-                            ] 
+                            ]
                             View.button [
                                 prop.position.x.at 1
                                 prop.position.y.at 9
@@ -406,7 +406,7 @@ let view (model:Model) (dispatch:Msg->unit) =
                                 | Some svmodel ->
                                     yield! Wizard.view svmodel (WizardMsg >> dispatch)
                             | TabView ->
-                                yield! TabView.view 
+                                yield! TabView.view
                         ]
                     ]
                 ]

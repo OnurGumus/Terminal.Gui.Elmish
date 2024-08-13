@@ -192,7 +192,7 @@ let view (state: Model) (dispatch: Msg -> unit) =
 
 
                             View.comboBox [
-                                prop.position.x.at 15
+                                prop.position.x.center
                                 prop.position.y.at 8
                                 prop.width.sized 10
                                 comboBox.text "Combobox"
@@ -232,7 +232,7 @@ let view (state: Model) (dispatch: Msg -> unit) =
                             ]
 
                             View.scrollView [
-                                prop.position.x.at 19
+                                prop.position.x.center
                                 prop.position.y.at 10
                                 prop.width.sized 15
                                 prop.height.sized 7

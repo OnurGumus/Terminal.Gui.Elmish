@@ -42,67 +42,67 @@ module ViewElement =
         let onMouseLeave     = props |> Interop.getValue<Terminal.Gui.View.MouseEventArgs->unit> "onMouseLeave"
         let onVisibleChanged = props |> Interop.getValue<unit->unit> "onVisibleChanged"
 
-        
-        onEnabledChanged 
-        |> Option.iter (fun onEnabledChanged -> 
+
+        onEnabledChanged
+        |> Option.iter (fun onEnabledChanged ->
             Interop.removeEventHandlerIfNecessary "EnabledChanged" view
             view.add_EnabledChanged onEnabledChanged
         )
-        
-        onEnter 
-        |> Option.iter (fun onEnter -> 
+
+        onEnter
+        |> Option.iter (fun onEnter ->
             Interop.removeEventHandlerIfNecessary "Enter" view
             view.add_Enter onEnter
         )
-        
-        onKeyDown 
-        |> Option.iter (fun onKeyDown -> 
+
+        onKeyDown
+        |> Option.iter (fun onKeyDown ->
             Interop.removeEventHandlerIfNecessary "KeyDown" view
             view.add_KeyDown onKeyDown
         )
-        
-        onKeyPress 
-        |> Option.iter (fun onKeyPress -> 
+
+        onKeyPress
+        |> Option.iter (fun onKeyPress ->
             Interop.removeEventHandlerIfNecessary "KeyPress" view
             view.add_KeyPress onKeyPress
         )
-        
-        onKeyUp 
-        |> Option.iter (fun onKeyUp -> 
+
+        onKeyUp
+        |> Option.iter (fun onKeyUp ->
             Interop.removeEventHandlerIfNecessary "KeyUp" view
             view.add_KeyUp onKeyUp
         )
-        
-        onLeave 
-        |> Option.iter (fun onLeave -> 
+
+        onLeave
+        |> Option.iter (fun onLeave ->
             Interop.removeEventHandlerIfNecessary "Leave" view
             view.add_Leave onLeave
         )
-        
-        onMouseClick 
-        |> Option.iter (fun onMouseClick -> 
+
+        onMouseClick
+        |> Option.iter (fun onMouseClick ->
             Interop.removeEventHandlerIfNecessary "MouseClick" view
             view.add_MouseClick onMouseClick
         )
-        
-        onMouseEnter 
-        |> Option.iter (fun onMouseEnter -> 
+
+        onMouseEnter
+        |> Option.iter (fun onMouseEnter ->
             Interop.removeEventHandlerIfNecessary "MouseEnter" view
             view.add_MouseEnter onMouseEnter
         )
-        
-        onMouseLeave 
+
+        onMouseLeave
         |> Option.iter (fun onMouseLeave ->
             Interop.removeEventHandlerIfNecessary "MouseLeave" view
             view.add_MouseLeave onMouseLeave
         )
-        
-        onVisibleChanged 
-        |> Option.iter (fun onVisibleChanged -> 
+
+        onVisibleChanged
+        |> Option.iter (fun onVisibleChanged ->
             Interop.removeEventHandlerIfNecessary "VisibleChanged" view
             view.add_VisibleChanged onVisibleChanged
         )
-        
+
 
     let setProps (view:View) props =
         setEvents view props
@@ -114,52 +114,52 @@ module ViewElement =
         //props |> Interop.getValue<string> "text"                    |> Option.iter (fun v -> if Checker.textChanged view v then view.Text <- v)
         props |> Interop.getValue<TextAlignment> "textAlignment"    |> Option.iter (fun v -> view.TextAlignment <- v)
         props |> Interop.getValue<TextDirection> "textDirection"    |> Option.iter (fun v -> view.TextDirection <- v)
-            
+
         props |> Interop.getValue<int> "tabIndex"   |> Option.iter (fun v -> view.TabIndex <- v)
         props |> Interop.getValue<bool> "autoSize"  |> Option.iter (fun v -> view.AutoSize <- v)
         props |> Interop.getValue<bool> "tabStop"   |> Option.iter (fun v -> view.TabStop <- v)
 
         props |> Interop.getValue<bool> "enabled" |> Option.iter (fun v -> view.Enabled <- v)
         props |> Interop.getValue<ColorScheme> "colorScheme" |> Option.iter (fun v -> view.ColorScheme <- v)
-        props 
-        |> Interop.getValue<Attribute> "colorDisabled" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "colorDisabled"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
             cloned.Normal <- v
             view.ColorScheme <- cloned
         )
-        props 
-        |> Interop.getValue<Attribute> "colorFocus" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "colorFocus"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
             cloned.Normal <- v
             view.ColorScheme <- cloned
         )
-        props 
-        |> Interop.getValue<Attribute> "colorHotFocus" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "colorHotFocus"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
             cloned.Normal <- v
             view.ColorScheme <- cloned
         )
-        props 
-        |> Interop.getValue<Attribute> "colorHotNormal" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "colorHotNormal"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
             cloned.Normal <- v
             view.ColorScheme <- cloned
         )
-        props 
-        |> Interop.getValue<Attribute> "colorNormal" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "colorNormal"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
@@ -167,9 +167,9 @@ module ViewElement =
             view.ColorScheme <- cloned
         )
 
-        props 
-        |> Interop.getValue<Attribute> "color" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Attribute> "color"
+        |> Option.iter (fun v ->
             let colorScheme =
                 view.ColorScheme |> Option.ofObj |> Option.defaultValue Colors.TopLevel
             let cloned = Interop.cloneColorScheme colorScheme
@@ -178,8 +178,8 @@ module ViewElement =
             view.ColorScheme <- cloned
         )
 
-        
-        
+
+
 
 
     let removeEvents (view:View) props =
@@ -204,55 +204,55 @@ module ViewElement =
         let onVisibleChanged = props |> Interop.getValue<unit->unit> "onVisibleChanged"
 
 
-        onEnabledChanged 
-        |> Option.iter (fun onEnabledChanged -> 
+        onEnabledChanged
+        |> Option.iter (fun onEnabledChanged ->
             Interop.removeEventHandlerIfNecessary "EnabledChanged" view
         )
 
-        onEnter 
-        |> Option.iter (fun onEnter -> 
+        onEnter
+        |> Option.iter (fun onEnter ->
             Interop.removeEventHandlerIfNecessary "Enter" view
         )
 
-        onKeyDown 
-        |> Option.iter (fun onKeyDown -> 
+        onKeyDown
+        |> Option.iter (fun onKeyDown ->
             Interop.removeEventHandlerIfNecessary "KeyDown" view
         )
 
-        onKeyPress 
-        |> Option.iter (fun onKeyPress -> 
+        onKeyPress
+        |> Option.iter (fun onKeyPress ->
             Interop.removeEventHandlerIfNecessary "KeyPress" view
         )
 
-        onKeyUp 
-        |> Option.iter (fun onKeyUp -> 
+        onKeyUp
+        |> Option.iter (fun onKeyUp ->
             Interop.removeEventHandlerIfNecessary "KeyUp" view
         )
 
-        onLeave 
-        |> Option.iter (fun onLeave -> 
+        onLeave
+        |> Option.iter (fun onLeave ->
             Interop.removeEventHandlerIfNecessary "Leave" view
         )
 
-        onMouseClick 
-        |> Option.iter (fun onMouseClick -> 
+        onMouseClick
+        |> Option.iter (fun onMouseClick ->
             Interop.removeEventHandlerIfNecessary "MouseClick" view
         )
 
-        onMouseEnter 
-        |> Option.iter (fun onMouseEnter -> 
+        onMouseEnter
+        |> Option.iter (fun onMouseEnter ->
             Interop.removeEventHandlerIfNecessary "MouseEnter" view
         )
 
-        onMouseLeave 
+        onMouseLeave
         |> Option.iter (fun onMouseLeave ->
             Interop.removeEventHandlerIfNecessary "MouseLeave" view
         )
 
-        onVisibleChanged 
-        |> Option.iter (fun onVisibleChanged -> 
+        onVisibleChanged
+        |> Option.iter (fun onVisibleChanged ->
             Interop.removeEventHandlerIfNecessary "VisibleChanged" view
-        )        
+        )
 
 
     let removeProps (view:View) props =
@@ -261,7 +261,7 @@ module ViewElement =
         props |> Interop.getValue<ColorScheme> "colorScheme" |> Option.iter (fun v -> view.ColorScheme <- null)
         props |> Interop.getValue<TextAlignment> "textAlignment"    |> Option.iter (fun v -> view.TextAlignment <- TextAlignment.Left)
         props |> Interop.getValue<TextDirection> "textDirection"    |> Option.iter (fun v -> view.TextDirection <- TextDirection.LeftRight_TopBottom)
-            
+
         props |> Interop.getValue<bool> "autoSize"  |> Option.iter (fun v -> view.AutoSize <- true)
         props |> Interop.getValue<bool> "tabStop"   |> Option.iter (fun v -> view.TabStop <- true)
 
@@ -270,24 +270,24 @@ module ViewElement =
         props |> Interop.getValue<Dim> "width"  |> Option.iter (fun v -> view.Width <- Dim.Sized(1); view.IsInitialized <- true)
         props |> Interop.getValue<Dim> "height" |> Option.iter (fun v -> view.Height <- Dim.Sized(1); view.IsInitialized <- true)
 
-        props 
-        |> Interop.getValue<Attribute> "colorDisabled" 
+        props
+        |> Interop.getValue<Attribute> "colorDisabled"
         |> Option.iter (fun v -> view.ColorScheme <- null)
-        props 
-        |> Interop.getValue<Attribute> "colorFocus" 
+        props
+        |> Interop.getValue<Attribute> "colorFocus"
         |> Option.iter (fun v -> view.ColorScheme <- null)
-        props 
-        |> Interop.getValue<Attribute> "colorHotFocus" 
+        props
+        |> Interop.getValue<Attribute> "colorHotFocus"
         |> Option.iter (fun v -> view.ColorScheme <- null)
-        props 
-        |> Interop.getValue<Attribute> "colorHotNormal" 
+        props
+        |> Interop.getValue<Attribute> "colorHotNormal"
         |> Option.iter (fun v -> view.ColorScheme <- null)
-        props 
-        |> Interop.getValue<Attribute> "colorNormal" 
+        props
+        |> Interop.getValue<Attribute> "colorNormal"
         |> Option.iter (fun v -> view.ColorScheme <- null)
 
-        props 
-        |> Interop.getValue<Attribute> "color" 
+        props
+        |> Interop.getValue<Attribute> "color"
         |> Option.iter (fun v -> view.ColorScheme <- null)
 
 
@@ -306,7 +306,7 @@ module ViewElement =
             (nameA = "DimAbsolute" && nameB = "DimAbsolute") ||
             (nameA <> "DimAbsolute" && nameB <> "DimAbsolute")
 
-            
+
         let positionX = props |> Interop.getValue<Pos> "x"      |> Option.map (fun v -> isPosCompatible view.X v) |> Option.defaultValue true
         let positionY = props |> Interop.getValue<Pos> "y"      |> Option.map (fun v -> isPosCompatible view.Y v) |> Option.defaultValue true
         let width = props |> Interop.getValue<Dim> "width"      |> Option.map (fun v -> isDimCompatible view.Width v) |> Option.defaultValue true
@@ -324,64 +324,64 @@ module ViewElement =
             widthNotRemoved
             heightNotRemoved
         ]
-        |> List.forall id 
-        
+        |> List.forall id
+
 
 
 
 [<RequireQualifiedAccess>]
 module MenuElements =
-    
+
     [<AbstractClass>]
     type MenuElement (props:IMenuProperty list) =
         let mutable view: MenuItem = null
-    
+
         member this.element with get() = view and set v = view <- v
-    
+
         abstract create: parent:MenuItem option -> unit
         abstract name: string
 
     type MenuItemElement(props:IMenuProperty list) =
-        inherit MenuElement(props) 
-        
-    
+        inherit MenuElement(props)
+
+
         let setProps (element:MenuItem) props =
             props |> Interop.getMenuValue<string> "title" |> Option.iter (fun v -> element.Title <- v)
             props |> Interop.getMenuValue<unit->unit> "action" |> Option.iter (fun v -> element.Action <- v)
             props |> Interop.getMenuValue<MenuItemCheckStyle> "itemstyle" |> Option.iter (fun v -> element.CheckType <- v)
             props |> Interop.getMenuValue<bool> "checked" |> Option.iter (fun v -> element.Checked <- v)
             props |> Interop.getMenuValue<Key> "shortcut" |> Option.iter (fun v -> element.Shortcut <- v)
-            
-           
-    
+
+
+
         override _.name = $"MenuItem"
-    
-    
+
+
         override this.create parent =
             #if DEBUG
             Diagnostics.Debug.WriteLine ($"{this.name} created!")
             #endif
             let el = new MenuItem()
-            
+
             setProps el props
-            this.element <- el   
+            this.element <- el
 
 
     type MenuBarItemElement(props:IMenuProperty list) as self =
-        inherit MenuElement(props) 
-        
-    
+        inherit MenuElement(props)
+
+
         let setProps (element:MenuBarItem) props =
-            props 
-            |> Interop.getMenuValue<IMenu list> "children" 
-            |> Option.iter (fun elements -> 
+            props
+            |> Interop.getMenuValue<IMenu list> "children"
+            |> Option.iter (fun elements ->
                 if elements.Length = 0 then
                     failwith("menu bar items should have at least one sub item")
-                let menus = 
-                    elements 
+                let menus =
+                    elements
                     |> Seq.cast<KeyValue>
                     |> Seq.map (function | KeyValue (name,elementProperties) -> (name, elementProperties :?> IMenuProperty list))
-                    |> Seq.map (fun (name,properties) -> 
+                    |> Seq.map (fun (name,properties) ->
                         match name with
                         | "submenuItem" ->
                             let el = MenuBarItemElement(properties)
@@ -399,73 +399,73 @@ module MenuElements =
                 element.Children <- menus
             )
             props |> Interop.getMenuValue<string> "title" |> Option.iter (fun v -> element.Title <- v)
-           
-    
+
+
         override _.name = $"MenuBarItem"
-    
-    
+
+
         override this.create parent =
             #if DEBUG
             Diagnostics.Debug.WriteLine ($"{this.name} created!")
             #endif
-            let el = 
+            let el =
                 match parent with
                 | None ->
-                    new MenuBarItem()    
+                    new MenuBarItem()
                 | Some parent ->
                     new MenuBarItem("", [||],parent)
-            setProps el props            
+            setProps el props
             this.element <- el
-    
-        
+
+
 
 
 type MenuBarElement(props:IMenuBarProperty list) =
-    inherit TerminalElement(props |> Seq.cast<IProperty> |> Seq.toList) 
-    
+    inherit TerminalElement(props |> Seq.cast<IProperty> |> Seq.toList)
+
     let setProps (element:MenuBar) props =
-        props 
-        |> Interop.getMenuBarValue<IMenuBarItem list> "menus" 
-        |> Option.iter (fun elements -> 
-            let menus = 
-                elements 
+        props
+        |> Interop.getMenuBarValue<IMenuBarItem list> "menus"
+        |> Option.iter (fun elements ->
+            let menus =
+                elements
                 |> Seq.cast<KeyValue>
                 |> Seq.map (function | KeyValue (_,elementProperties) -> elementProperties :?> IMenuProperty list)
-                |> Seq.map (fun menuBarProperties -> 
+                |> Seq.map (fun menuBarProperties ->
                     let el = MenuElements.MenuBarItemElement(menuBarProperties)
                     el.create None; el.element :?> MenuBarItem)
                 |> Seq.toArray
-                
+
             element.Menus <- (menus)
         )
         props |> Interop.getMenuBarValue<bool> "useKeysUpDownAsKeysLeftRight" |> Option.iter (fun v -> element.UseKeysUpDownAsKeysLeftRight <- v)
         props |> Interop.getMenuBarValue<bool> "useSubMenusSingleFrame" |> Option.iter (fun v -> element.UseSubMenusSingleFrame <- v)
 
         // onMenuAllClosed
-        props 
-        |> Interop.getMenuBarValue<unit->unit> "onMenuAllClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<unit->unit> "onMenuAllClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuAllClosed" element
             element.add_MenuAllClosed v
         )
         // onMenuClosing
-        props 
-        |> Interop.getMenuBarValue<MenuClosingEventArgs->unit> "onMenuClosing" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuClosingEventArgs->unit> "onMenuClosing"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuClosing" element
             element.add_MenuClosing v
         )
         // onMenuOpened
-        props 
-        |> Interop.getMenuBarValue<MenuItem->unit> "onMenuOpened" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuItem->unit> "onMenuOpened"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuOpened" element
             element.add_MenuOpened v
         )
         // onMenuOpening
-        props 
-        |> Interop.getMenuBarValue<MenuOpeningEventArgs->unit> "onMenuOpening" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuOpeningEventArgs->unit> "onMenuOpening"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuOpening" element
             element.add_MenuOpening v
         )
@@ -474,29 +474,29 @@ type MenuBarElement(props:IMenuBarProperty list) =
         props |> Interop.getMenuBarValue<MenuBarItem list> "menus" |> Option.iter (fun v -> element.Menus <- Array.empty)
         props |> Interop.getMenuBarValue<bool> "useKeysUpDownAsKeysLeftRight" |> Option.iter (fun v -> element.UseKeysUpDownAsKeysLeftRight <- false)
         props |> Interop.getMenuBarValue<bool> "useSubMenusSingleFrame" |> Option.iter (fun v -> element.UseSubMenusSingleFrame <- false)
-        
+
         // onMenuAllClosed
-        props 
-        |> Interop.getMenuBarValue<unit->unit> "onMenuAllClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<unit->unit> "onMenuAllClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuAllClosed" element
         )
         // onMenuClosing
-        props 
-        |> Interop.getMenuBarValue<MenuClosingEventArgs->unit> "onMenuClosing" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuClosingEventArgs->unit> "onMenuClosing"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuClosing" element
         )
         // onMenuOpened
-        props 
-        |> Interop.getMenuBarValue<MenuItem->unit> "onMenuOpened" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuItem->unit> "onMenuOpened"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuOpened" element
         )
         // onMenuOpening
-        props 
-        |> Interop.getMenuBarValue<MenuOpeningEventArgs->unit> "onMenuOpening" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getMenuBarValue<MenuOpeningEventArgs->unit> "onMenuOpening"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "MenuOpening" element
         )
 
@@ -523,7 +523,7 @@ type MenuBarElement(props:IMenuBarProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let props = props |> Seq.cast<IProperty> |> Seq.toList
         let element = prevElement :?> MenuBar
         let (changedProps,removedProps) = Interop.filterProps oldProps props
@@ -535,249 +535,249 @@ type MenuBarElement(props:IMenuBarProperty list) =
         setProps element (changedProps |> Seq.cast<IMenuBarProperty> |> Seq.toList)
         this.element <- prevElement
 
-    
+
 
 type PageElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:Toplevel) props =
-        
-        
+
+
         props |> Interop.getValue<bool> "running"         |> Option.iter (fun v -> element.Running <- v)
         props |> Interop.getValue<bool> "modal"         |> Option.iter (fun v -> element.Modal <- v)
         // Todo:
         props |> Interop.getValue<StatusBar> "statusBar"         |> Option.iter (fun v -> element.StatusBar <- v)
         props |> Interop.getValue<bool> "isMdiContainer"         |> Option.iter (fun v -> element.IsMdiContainer <- v)
-        
+
         // onLoaded
-        props 
-        |> Interop.getValue<unit->unit> "onLoaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onLoaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Loaded" element
             element.add_Loaded v
         )
-        
+
         // onReady
-        props 
-        |> Interop.getValue<unit->unit> "onReady" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onReady"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Ready" element
             element.add_Ready v
         )
-        
+
         // onUnloaded
-        props 
-        |> Interop.getValue<unit->unit> "onUnloaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onUnloaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Unloaded" element
             element.add_Unloaded v
         )
-        
+
         // onActivate
-        props 
-        |> Interop.getValue<Toplevel->unit> "onActivate" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onActivate"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Activate" element
             element.add_Activate v
         )
-        
+
         // onDeactivate
-        props 
-        |> Interop.getValue<Toplevel->unit> "onDeactivate" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onDeactivate"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Deactivate" element
             element.add_Deactivate v
         )
-        
+
         // onChildClosed
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildClosed" element
             element.add_ChildClosed v
         )
-        
+
         // onAllChildClosed
-        props 
-        |> Interop.getValue<unit->unit> "onAllChildClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onAllChildClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AllChildClosed" element
             element.add_AllChildClosed v
         )
-        
+
         // onClosing
-        props 
-        |> Interop.getValue<ToplevelClosingEventArgs->unit> "onClosing" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ToplevelClosingEventArgs->unit> "onClosing"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Closing" element
             element.add_Closing v
         )
-        
+
         // onClosed
-        props 
-        |> Interop.getValue<Toplevel->unit> "onClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Closed" element
             element.add_Closed v
         )
-        
+
         // onChildLoaded
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildLoaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildLoaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildLoaded" element
             element.add_ChildLoaded v
         )
-        
+
         // onChildUnloaded
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildUnloaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildUnloaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildUnloaded" element
             element.add_ChildUnloaded v
         )
-        
+
         // onResized
-        props 
-        |> Interop.getValue<Size->unit> "onResized" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Size->unit> "onResized"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Resized" element
             element.add_Resized v
         )
-        
+
         // onAlternateForwardKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onAlternateForwardKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onAlternateForwardKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AlternateForwardKeyChanged" element
             element.add_AlternateForwardKeyChanged v
         )
-        
+
         // onAlternateBackwardKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onAlternateBackwardKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onAlternateBackwardKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AlternateBackwardKeyChanged" element
             element.add_AlternateBackwardKeyChanged v
         )
-        
+
         // onQuitKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onQuitKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onQuitKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "QuitKeyChanged" element
             element.add_QuitKeyChanged v
         )
-        
+
 
     let removeProps (element:Toplevel) props =
-        props 
-        |> Interop.getValue<IMenuBarProperty list> "menuBar" 
-        |> Option.iter (fun menubarProperties -> 
+        props
+        |> Interop.getValue<IMenuBarProperty list> "menuBar"
+        |> Option.iter (fun menubarProperties ->
             element.MenuBar <- null
         )
         // onLoaded
-        props 
-        |> Interop.getValue<unit->unit> "onLoaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onLoaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Loaded" element
         )
-        
+
         // onReady
-        props 
-        |> Interop.getValue<unit->unit> "onReady" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onReady"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Ready" element
         )
-        
+
         // onUnloaded
-        props 
-        |> Interop.getValue<unit->unit> "onUnloaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onUnloaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Unloaded" element
         )
-        
+
         // onActivate
-        props 
-        |> Interop.getValue<Toplevel->unit> "onActivate" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onActivate"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Activate" element
         )
-        
+
         // onDeactivate
-        props 
-        |> Interop.getValue<Toplevel->unit> "onDeactivate" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onDeactivate"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Deactivate" element
         )
-        
+
         // onChildClosed
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildClosed" element
         )
-        
+
         // onAllChildClosed
-        props 
-        |> Interop.getValue<unit->unit> "onAllChildClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onAllChildClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AllChildClosed" element
         )
-        
+
         // onClosing
-        props 
-        |> Interop.getValue<ToplevelClosingEventArgs->unit> "onClosing" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ToplevelClosingEventArgs->unit> "onClosing"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Closing" element
         )
-        
+
         // onClosed
-        props 
-        |> Interop.getValue<Toplevel->unit> "onClosed" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onClosed"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Closed" element
         )
-        
+
         // onChildLoaded
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildLoaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildLoaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildLoaded" element
         )
-        
+
         // onChildUnloaded
-        props 
-        |> Interop.getValue<Toplevel->unit> "onChildUnloaded" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Toplevel->unit> "onChildUnloaded"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ChildUnloaded" element
         )
-        
+
         // onResized
-        props 
-        |> Interop.getValue<Size->unit> "onResized" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Size->unit> "onResized"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Resized" element
         )
-        
+
         // onAlternateForwardKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onAlternateForwardKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onAlternateForwardKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AlternateForwardKeyChanged" element
         )
-        
+
         // onAlternateBackwardKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onAlternateBackwardKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onAlternateBackwardKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "AlternateBackwardKeyChanged" element
         )
-        
+
         // onQuitKeyChanged
-        props 
-        |> Interop.getValue<Key->unit> "onQuitKeyChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Key->unit> "onQuitKeyChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "QuitKeyChanged" element
         )
 
@@ -794,17 +794,17 @@ type PageElement(props:IProperty list) =
         ViewElement.setProps el props
         setProps el props
         props |> Interop.getValue<View->unit> "ref" |> Option.iter (fun v -> v el)
-        
+
         // add menu
-        props 
-        |> Interop.getValue<IMenuBarProperty list> "menuBar" 
-        |> Option.iter (fun menubarProperties -> 
+        props
+        |> Interop.getValue<IMenuBarProperty list> "menuBar"
+        |> Option.iter (fun menubarProperties ->
             let menubar = MenuBarElement(menubarProperties)
             menubar.create (Some el)
             //element.MenuBar <- (menubar.element :?> MenuBar)
             //element.Add (menubar.element :?> MenuBar)
         )
-        
+
         this.element <- el
 
     override this.canUpdate prevElement oldProps =
@@ -815,7 +815,7 @@ type PageElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> Toplevel
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -827,10 +827,10 @@ type PageElement(props:IProperty list) =
 
 
 type WindowElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let title = props |> Interop.getValueDefault "title" ""
-    
+
 
     let setProps (element:Window) props =
         props |> Interop.getValue<string> "title" |> Option.map Interop.ustr |> Option.iter (fun v -> element.Title <- v)
@@ -838,7 +838,7 @@ type WindowElement(props:IProperty list) =
         props |> Interop.getValue<BorderStyle> "borderStyle" |> Option.iter (fun v -> element.Border.BorderStyle <- v)
         props |> Interop.getValue<bool> "effect3D" |> Option.iter (fun v -> element.Border.Effect3D <- v)
 
-        
+
     let removeProps (element:Window) props =
         props |> Interop.getValue<bool> "effect3D" |> Option.iter (fun v -> element.Border.Effect3D <- false)
 
@@ -866,7 +866,7 @@ type WindowElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> Window
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -877,28 +877,28 @@ type WindowElement(props:IProperty list) =
 
 
 type LabelElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let text = props |> Interop.getValueDefault "text" ""
-    
+
 
     let setProps (element:Label) props =
         props |> Interop.getValue<string> "text" |> Option.iter (fun v -> if Checker.textChanged element v then element.Text <- v)
-        
+
         // onCLick
-        props 
-        |> Interop.getValue<unit->unit> "onClick" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onClick"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Clicked" element
             element.add_Clicked v
         )
-        
+
 
     let removeProps (element:Label) props =
         // onCLick
-        props 
-        |> Interop.getValue<unit->unit> "onClick" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onClick"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Clicked" element
         )
 
@@ -926,7 +926,7 @@ type LabelElement(props:IProperty list) =
         this.element <- el
 
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> Label
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -937,7 +937,7 @@ type LabelElement(props:IProperty list) =
 
 
 type ButtonElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let text = props |> Interop.getValueDefault "text" ""
 
@@ -948,25 +948,25 @@ type ButtonElement(props:IProperty list) =
         props |> Interop.getValue<Rune> "hotKeySpecifier"   |> Option.iter (fun v -> element.HotKeySpecifier <- v)
         props |> Interop.getValue<bool> "autoSize"          |> Option.iter (fun v -> element.AutoSize <- v)
         // onCLick
-        props 
-        |> Interop.getValue<unit->unit> "onClick" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onClick"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Clicked" element
             let action = fun () ->
                 v()
                 element.SetFocus()
-            
+
             element.add_Clicked action
         )
-        
-            
+
+
 
     let removeProps (element:Button) props =
         props |> Interop.getValue<bool> "isDefault"         |> Option.iter (fun v -> element.IsDefault <- false)
         // onCLick
-        props 
-        |> Interop.getValue<unit->unit> "onClick" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onClick"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Clicked" element
         )
 
@@ -995,7 +995,7 @@ type ButtonElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> Button
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1006,15 +1006,15 @@ type ButtonElement(props:IProperty list) =
 
 
 type CheckBoxElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:CheckBox) props =
         props |> Interop.getValue<string> "text" |> Option.iter (fun v -> if Checker.textChanged element v then element.Text <- v)
         props |> Interop.getValue<bool> "checked" |> Option.iter (fun v -> element.Checked <- v)
         // onToggled
-        props 
-        |> Interop.getValue<{| previous:bool; current:bool |}->unit> "toggled" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<{| previous:bool; current:bool |}->unit> "toggled"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Toggled" element
             let action previous = v ({| previous = previous; current = element.Checked |})
             element.add_Toggled action
@@ -1023,9 +1023,9 @@ type CheckBoxElement(props:IProperty list) =
     let removeProps (element:CheckBox) props =
         props |> Interop.getValue<bool> "checked" |> Option.iter (fun v -> element.Checked <- false)
         // onToggled
-        props 
-        |> Interop.getValue<{| previous:bool; current:bool |}->unit> "toggled" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<{| previous:bool; current:bool |}->unit> "toggled"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Toggled" element
         )
 
@@ -1054,7 +1054,7 @@ type CheckBoxElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> CheckBox
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1065,16 +1065,16 @@ type CheckBoxElement(props:IProperty list) =
 
 
 type ColorPickerElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:ColorPicker) props =
         // yes named title, but into the text property
         props |> Interop.getValue<string> "title" |> Option.iter (fun v -> if Checker.textChanged element v then element.Text <- v)
         props |> Interop.getValue<Terminal.Gui.Color> "selectedColor" |> Option.iter (fun v -> element.SelectedColor <- v)
         //onColorChanged
-        props 
-        |> Interop.getValue<Terminal.Gui.Color->unit> "onColorChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Terminal.Gui.Color->unit> "onColorChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ColorChanged" element
             let action = fun () -> element.SelectedColor |> v
             element.add_ColorChanged action
@@ -1082,9 +1082,9 @@ type ColorPickerElement(props:IProperty list) =
 
     let removeProps (element:ColorPicker) props =
         //onColorChanged
-        props 
-        |> Interop.getValue<unit->unit> "onColorChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onColorChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ColorChanged" element
         )
 
@@ -1112,7 +1112,7 @@ type ColorPickerElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> ColorPicker
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1123,31 +1123,31 @@ type ColorPickerElement(props:IProperty list) =
 
 
 type ComboBoxElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:ComboBox) props =
-        props 
-        |> Interop.getValue<string list> "source" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string list> "source"
+        |> Option.iter (fun v ->
             element.SetSource(v |> System.Linq.Enumerable.ToList)
         )
         props |> Interop.getValue<string> "text"        |> Option.iter (fun v -> if Checker.textChanged element v then element.Text <- v)
         props |> Interop.getValue<int> "selectedItem"   |> Option.iter (fun v -> element.SelectedItem <- v)
         props |> Interop.getValue<bool> "readonly"      |> Option.iter (fun v -> element.ReadOnly <- v)
-        
-        
-        
+
+
+
         //
-        props 
-        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onOpenSelectedItem" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onOpenSelectedItem"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "OpenSelectedItem" element
             element.add_OpenSelectedItem v
         )
 
-        props 
-        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
             element.add_SelectedItemChanged v
         )
@@ -1155,15 +1155,15 @@ type ComboBoxElement(props:IProperty list) =
     let removeProps (element:ComboBox) props =
         props |> Interop.getValue<int> "readonly" |> Option.iter (fun v -> element.ReadOnly <- false)
 
-        props 
-        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onOpenSelectedItem" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onOpenSelectedItem"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "OpenSelectedItem" element
         )
 
-        props 
-        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<Terminal.Gui.ListViewItemEventArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
         )
 
@@ -1177,8 +1177,10 @@ type ComboBoxElement(props:IProperty list) =
         this.parent <- parent
         let dropDownHeight = props |> Interop.getValueDefault<int> "dropdownHeight" 5
         let source = props |> Interop.getValueDefault<string list> "source" [] |> Linq.Enumerable.ToList
-        let width = source |> Seq.map (fun i -> i.Length)|> Seq.max
-        let el = new ComboBox(Rect(0,0,width + 2,dropDownHeight), source)
+        let width = source |> Seq.map (fun i -> i.Length + 2)|> Seq.max
+        let el = new ComboBox()
+        el.Height <- Dim.Fill dropDownHeight
+        el.Width <- width
         parent |> Option.iter (fun p -> p.Add el)
         el.ColorScheme <- Colors.Base
         ViewElement.setProps el props
@@ -1195,7 +1197,7 @@ type ComboBoxElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> ComboBox
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1206,14 +1208,14 @@ type ComboBoxElement(props:IProperty list) =
 
 
 type DateFieldElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:DateField) props =
         props |> Interop.getValue<DateTime> "date" |> Option.iter (fun v -> element.Date <- v)
         props |> Interop.getValue<bool> "isShortFormat" |> Option.iter (fun v -> element.IsShortFormat <- v)
         // onDateChanged
-        props 
-        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<DateTime>->unit> "onDateChanged" 
+        props
+        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<DateTime>->unit> "onDateChanged"
         |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "DateChanged" element
             element.add_DateChanged v
@@ -1221,8 +1223,8 @@ type DateFieldElement(props:IProperty list) =
 
     let removeProps (element:DateField) props =
         // onDateChanged
-        props 
-        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<DateTime>->unit> "onDateChanged" 
+        props
+        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<DateTime>->unit> "onDateChanged"
         |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "DateChanged" element
         )
@@ -1235,11 +1237,11 @@ type DateFieldElement(props:IProperty list) =
         Diagnostics.Debug.WriteLine ($"{this.name} created!")
         #endif
         this.parent <- parent
-        let el = 
+        let el =
             match props |> Interop.getValue<DateTime> "date" with
             | None ->
                 new DateField()
-            | Some date -> 
+            | Some date ->
                 new DateField(date)
         parent |> Option.iter (fun p -> p.Add el)
         ViewElement.setProps el props
@@ -1258,7 +1260,7 @@ type DateFieldElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> DateField
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1269,7 +1271,7 @@ type DateFieldElement(props:IProperty list) =
 
 
 type FrameViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:FrameView) props =
         props |> Interop.getValue<BorderStyle> "borderStyle"    |> Option.iter (fun v -> element.Border.BorderStyle <- v)
@@ -1307,11 +1309,11 @@ type FrameViewElement(props:IProperty list) =
         let canUpdateElement =
             true
         canUpdateView && canUpdateElement
-        
 
-        
 
-    override this.update prevElement oldProps = 
+
+
+    override this.update prevElement oldProps =
         let element = prevElement :?> FrameView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1323,7 +1325,7 @@ type FrameViewElement(props:IProperty list) =
 
 // Seems incomplete
 type GraphViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:GraphView) props =
         props |> Interop.getValue<PointF> "scrollOffset"                    |> Option.iter (fun v -> element.ScrollOffset <- v)
@@ -1361,7 +1363,7 @@ type GraphViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> GraphView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1372,7 +1374,7 @@ type GraphViewElement(props:IProperty list) =
 
 
 type HexViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
 
     let setProps (element:HexView) props =
@@ -1380,16 +1382,16 @@ type HexViewElement(props:IProperty list) =
         props |> Interop.getValue<int64> "displayStart"         |> Option.iter (fun v -> element.DisplayStart <- v)
         props |> Interop.getValue<bool> "allowEdits"            |> Option.iter (fun v -> element.AllowEdits <- v)
         // onEdited
-        props 
-        |> Interop.getValue<System.Collections.Generic.KeyValuePair<int64,byte>->unit> "onEdited" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<System.Collections.Generic.KeyValuePair<int64,byte>->unit> "onEdited"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Edited" element
             element.add_Edited v
         )
         // onPositionChanged
-        props 
-        |> Interop.getValue<HexView.HexViewEventArgs->unit> "onPositionChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<HexView.HexViewEventArgs->unit> "onPositionChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "PositionChanged" element
             element.add_PositionChanged v
         )
@@ -1397,15 +1399,15 @@ type HexViewElement(props:IProperty list) =
     let removeProps (element:HexView) props =
         props |> Interop.getValue<bool> "allowEdits"    |> Option.iter (fun v -> element.AllowEdits <- false)
         // onEdited
-        props 
-        |> Interop.getValue<System.Collections.Generic.KeyValuePair<int64,byte>->unit> "onEdited" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<System.Collections.Generic.KeyValuePair<int64,byte>->unit> "onEdited"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "Edited" element
         )
         // onPositionChanged
-        props 
-        |> Interop.getValue<HexView.HexViewEventArgs->unit> "onPositionChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<HexView.HexViewEventArgs->unit> "onPositionChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "PositionChanged" element
         )
 
@@ -1433,7 +1435,7 @@ type HexViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> HexView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1444,7 +1446,7 @@ type HexViewElement(props:IProperty list) =
 
 
 type LineViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:LineView) props =
         props |> Interop.getValue<System.Rune option> "startingAnchor"  |> Option.iter (fun v -> element.StartingAnchor <- v |> Option.toNullable)
@@ -1479,7 +1481,7 @@ type LineViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> LineView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1490,12 +1492,12 @@ type LineViewElement(props:IProperty list) =
 
 
 type ListViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:ListView) props =
-        props 
-        |> Interop.getValue<string list> "source" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string list> "source"
+        |> Option.iter (fun v ->
             element.SelectedItem <- 0
             element.SetSource(v |> System.Linq.Enumerable.ToList)
         )
@@ -1505,25 +1507,25 @@ type ListViewElement(props:IProperty list) =
         props |> Interop.getValue<int> "selectedItem"               |> Option.iter (fun v -> element.SelectedItem <- v)
         props |> Interop.getValue<int> "leftItem"                   |> Option.iter (fun v -> element.LeftItem <- v)
         props |> Interop.getValue<int> "topItem"                    |> Option.iter (fun v -> element.TopItem <- v)
-        
+
         // onOpenSelectedItem
-        props 
-        |> Interop.getValue<ListViewItemEventArgs->unit> "onOpenSelectedItem" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewItemEventArgs->unit> "onOpenSelectedItem"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "OpenSelectedItem" element
             element.add_OpenSelectedItem v
         )
         // onSelectedItemChanged
-        props 
-        |> Interop.getValue<ListViewItemEventArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewItemEventArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
             element.add_SelectedItemChanged v
         )
         // onRowRender
-        props 
-        |> Interop.getValue<ListViewRowEventArgs->unit> "onRowRender" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewRowEventArgs->unit> "onRowRender"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "RowRender" element
             element.add_RowRender v
         )
@@ -1533,21 +1535,21 @@ type ListViewElement(props:IProperty list) =
         props |> Interop.getValue<bool> "allowsMultipleSelection" |> Option.iter (fun v -> element.AllowsMultipleSelection <- false)
         props |> Interop.getValue<bool> "allowsMarking" |> Option.iter (fun v -> element.AllowsMarking <- false)
         // onOpenSelectedItem
-        props 
-        |> Interop.getValue<ListViewItemEventArgs->unit> "onOpenSelectedItem" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewItemEventArgs->unit> "onOpenSelectedItem"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "OpenSelectedItem" element
         )
         // onSelectedItemChanged
-        props 
-        |> Interop.getValue<ListViewItemEventArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewItemEventArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
         )
         // onRowRender
-        props 
-        |> Interop.getValue<ListViewRowEventArgs->unit> "onRowRender" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ListViewRowEventArgs->unit> "onRowRender"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "RowRender" element
         )
 
@@ -1559,13 +1561,13 @@ type ListViewElement(props:IProperty list) =
         Diagnostics.Debug.WriteLine ($"{this.name} created!")
         #endif
         this.parent <- parent
-        let el = 
+        let el =
             match props |> Interop.getValue<string list> "source" with
             | None ->
                 new ListView()
             | Some source ->
                 new ListView(source |> System.Linq.Enumerable.ToList)
-        
+
         parent |> Option.iter (fun p -> p.Add el)
         ViewElement.setProps el props
         setProps el props
@@ -1581,7 +1583,7 @@ type ListViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> ListView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1595,24 +1597,24 @@ type PanelViewElement(props:IProperty list) as self =
     inherit TerminalElement(props)
 
     let createChild (element:PanelView) =
-        props 
-        |> Interop.getValue<TerminalElement> "child" 
-        |> Option.iter (fun child -> 
+        props
+        |> Interop.getValue<TerminalElement> "child"
+        |> Option.iter (fun child ->
             self.additionalProps <- [
                 Interop.mkprop "child" child
             ]
             child.create (Some element)
-            
+
             child.properties |> Interop.getValue<View->unit> "ref" |> Option.iter (fun v -> v child.element)
             element.Child <- child.element
         )
 
     let updateChild (element:PanelView) oldProps =
-        props 
-        |> Interop.getValue<TerminalElement> "child" 
-        |> Option.iter (fun child -> 
-            let prevChild = 
-                oldProps 
+        props
+        |> Interop.getValue<TerminalElement> "child"
+        |> Option.iter (fun child ->
+            let prevChild =
+                oldProps
                 |> Interop.getValue<TerminalElement> "child"
 
             match prevChild with
@@ -1628,15 +1630,15 @@ type PanelViewElement(props:IProperty list) as self =
                 else
                     element.Child.Dispose()
                     createChild element
-                
+
         )
 
 
     let setProps (element:PanelView) props =
-        props |> Interop.getValue<BorderStyle> "borderStyle" |> Option.iter (fun v -> 
+        props |> Interop.getValue<BorderStyle> "borderStyle" |> Option.iter (fun v ->
             element.Border.BorderStyle <- v)
         props |> Interop.getValue<bool> "usePanelFrame" |> Option.iter (fun v -> element.UsePanelFrame <- v)
-        props |> Interop.getValue<bool> "effect3D" |> Option.iter (fun v -> 
+        props |> Interop.getValue<bool> "effect3D" |> Option.iter (fun v ->
             element.Border.Effect3D <- v)
 
     let removeProps (element:PanelView) props =
@@ -1652,7 +1654,7 @@ type PanelViewElement(props:IProperty list) as self =
         this.parent <- parent
         let el = new PanelView()
         parent |> Option.iter (fun p -> p.Add el)
-        
+
         createChild el
         ViewElement.setProps el props
         setProps el props
@@ -1669,7 +1671,7 @@ type PanelViewElement(props:IProperty list) as self =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> PanelView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1677,13 +1679,13 @@ type PanelViewElement(props:IProperty list) as self =
         updateChild element oldProps
         ViewElement.setProps prevElement changedProps
         setProps element changedProps
-        
+
         this.element <- prevElement
 
 
 
 type ProgressBarElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:ProgressBar) props =
         props |> Interop.getValue<bool> "bidirectionalMarquee"          |> Option.iter (fun v -> element.BidirectionalMarquee <- v)
@@ -1720,7 +1722,7 @@ type ProgressBarElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> ProgressBar
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1732,27 +1734,27 @@ type ProgressBarElement(props:IProperty list) =
 
 
 type RadioGroupElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:RadioGroup) props =
         props |> Interop.getValue<#seq<string>> "radioLabels"       |> Option.iter (fun v -> element.RadioLabels <- (v |> Seq.map Interop.ustr |> Seq.toArray) )
-        
+
         props |> Interop.getValue<DisplayModeLayout> "displayMode"  |> Option.iter (fun v -> element.DisplayMode <- v)
         props |> Interop.getValue<int> "horizontalSpace"            |> Option.iter (fun v -> element.HorizontalSpace <- v)
-        
+
         // onSelectedItemChanged
-        props 
-        |> Interop.getValue<SelectedItemChangedArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<SelectedItemChangedArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
             element.add_SelectedItemChanged v
         )
         props |> Interop.getValue<int> "selectedItem"               |> Option.iter (fun v -> element.SelectedItem <- v)
 
     let removeProps (element:RadioGroup) props =
-        props 
-        |> Interop.getValue<SelectedItemChangedArgs->unit> "onSelectedItemChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<SelectedItemChangedArgs->unit> "onSelectedItemChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedItemChanged" element
         )
 
@@ -1780,7 +1782,7 @@ type RadioGroupElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> RadioGroup
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1792,7 +1794,7 @@ type RadioGroupElement(props:IProperty list) =
 
 // not working yet
 //type ScrollBarViewElement(props:IProperty list) =
-//    inherit TerminalElement(props) 
+//    inherit TerminalElement(props)
 
 //    let setProps (element:ScrollBarView) props =
 //        props |> Interop.getValue<bool> "autoHideScrollBars"         |> Option.iter (fun v -> element.AutoHideScrollBars <- v)
@@ -1802,11 +1804,11 @@ type RadioGroupElement(props:IProperty list) =
 //        props |> Interop.getValue<int>  "position"                   |> Option.iter (fun v -> element.Position <- v)
 //        props |> Interop.getValue<bool> "showScrollIndicator"        |> Option.iter (fun v -> element.ShowScrollIndicator <- v)
 //        props |> Interop.getValue<int>  "size"                       |> Option.iter (fun v -> element.Size <- v)
-        
+
 //        // onChangedPosition
-//        props 
-//        |> Interop.getValue<unit->unit> "onChangedPosition" 
-//        |> Option.iter (fun v -> 
+//        props
+//        |> Interop.getValue<unit->unit> "onChangedPosition"
+//        |> Option.iter (fun v ->
 //            Interop.removeEventHandlerIfNecessary "ChangedPosition" element
 //            element.add_ChangedPosition v
 //        )
@@ -1817,9 +1819,9 @@ type RadioGroupElement(props:IProperty list) =
 //        props |> Interop.getValue<bool> "keepContentAlwaysInViewport"|> Option.iter (fun v -> element.KeepContentAlwaysInViewport <- true)
 //        props |> Interop.getValue<bool> "showScrollIndicator"        |> Option.iter (fun v -> element.ShowScrollIndicator <- false)
 //        // onChangedPosition
-//        props 
-//        |> Interop.getValue<unit->unit> "onChangedPosition" 
-//        |> Option.iter (fun v -> 
+//        props
+//        |> Interop.getValue<unit->unit> "onChangedPosition"
+//        |> Option.iter (fun v ->
 //            Interop.removeEventHandlerIfNecessary "ChangedPosition" element
 //        )
 
@@ -1846,7 +1848,7 @@ type RadioGroupElement(props:IProperty list) =
 
 //        canUpdateView && canUpdateElement
 
-//    override this.update prevElement oldProps = 
+//    override this.update prevElement oldProps =
 //        let element = prevElement :?> ScrollBarView
 //        let (changedProps,removedProps) = Interop.filterProps oldProps props
 //        ViewElement.removeProps prevElement removedProps
@@ -1858,7 +1860,7 @@ type RadioGroupElement(props:IProperty list) =
 
 
 type ScrollViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:ScrollView) props =
         props |> Interop.getValue<bool> "autoHideScrollBars"         |> Option.iter (fun v -> element.AutoHideScrollBars <- v)
@@ -1898,7 +1900,7 @@ type ScrollViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> ScrollView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1910,7 +1912,7 @@ type ScrollViewElement(props:IProperty list) =
 
 //Todo
 type StatusBarElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:StatusBar) props =
         ()
@@ -1942,7 +1944,7 @@ type StatusBarElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> StatusBar
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -1954,7 +1956,7 @@ type StatusBarElement(props:IProperty list) =
 
 
 type TableViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TableView) props =
         props |> Interop.getValue<DataTable> "table"            |> Option.iter (fun v -> element.Table <- v)
@@ -1968,39 +1970,39 @@ type TableViewElement(props:IProperty list) =
         props |> Interop.getValue<int> "maxCellWidth"           |> Option.iter (fun v -> element.MaxCellWidth <- v)
         props |> Interop.getValue<string> "nullSymbol"          |> Option.iter (fun v -> element.NullSymbol <- v)
         props |> Interop.getValue<char> "separatorSymbol"       |> Option.iter (fun v -> element.SeparatorSymbol <- v)
-        
+
         // onSelectedCellChanged
-        props 
-        |> Interop.getValue<TableView.SelectedCellChangedEventArgs->unit> "onSelectedCellChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TableView.SelectedCellChangedEventArgs->unit> "onSelectedCellChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedCellChanged" element
             element.add_SelectedCellChanged v
         )
-        
+
         // onCellActivated
-        props 
-        |> Interop.getValue<TableView.CellActivatedEventArgs->unit> "onCellActivated" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TableView.CellActivatedEventArgs->unit> "onCellActivated"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "CellActivated" element
             element.add_CellActivated v
         )
         props |> Interop.getValue<Key> "cellActivationKey" |> Option.iter (fun v -> element.CellActivationKey <- v)
-        
+
 
     let removeProps (element:TableView) props =
         props |> Interop.getValue<bool> "fullRowSelect" |> Option.iter (fun v -> element.FullRowSelect <- false)
         props |> Interop.getValue<bool> "multiSelect"   |> Option.iter (fun v -> element.MultiSelect <- false)
         // onSelectedCellChanged
-        props 
-        |> Interop.getValue<TableView.SelectedCellChangedEventArgs->unit> "onSelectedCellChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TableView.SelectedCellChangedEventArgs->unit> "onSelectedCellChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedCellChanged" element
         )
-        
+
         // onCellActivated
-        props 
-        |> Interop.getValue<TableView.CellActivatedEventArgs->unit> "onCellActivated" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TableView.CellActivatedEventArgs->unit> "onCellActivated"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "CellActivated" element
         )
 
@@ -2028,7 +2030,7 @@ type TableViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TableView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2040,7 +2042,7 @@ type TableViewElement(props:IProperty list) =
 
 
 type TabViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TabView) props =
         props |> Interop.getValue<int> "tabScrollOffset"    |> Option.iter (fun v -> element.TabScrollOffset <- v)
@@ -2059,20 +2061,20 @@ type TabViewElement(props:IProperty list) =
                     view.create None
                     TabView.Tab(title, view.element))
                 |> Option.iter (fun tab -> element.AddTab(tab, false))))
-        
+
         // onSelectedTabChanged
-        props 
-        |> Interop.getValue<EventHandler<TabView.TabChangedEventArgs>> "onSelectedTabChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<EventHandler<TabView.TabChangedEventArgs>> "onSelectedTabChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedTabChanged" element
             element.add_SelectedTabChanged v
         )
 
     let removeProps (element:TabView) props =
         // onSelectedTabChanged
-        props 
-        |> Interop.getValue<EventHandler<TabView.TabChangedEventArgs>> "onSelectedTabChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<EventHandler<TabView.TabChangedEventArgs>> "onSelectedTabChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectedTabChanged" element
         )
 
@@ -2097,11 +2099,11 @@ type TabViewElement(props:IProperty list) =
         ViewElement.setProps el props
         setProps el props
         props |> Interop.getValue<View->unit> "ref" |> Option.iter (fun v -> v el)
-        
+
         this.element <- el
 
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TabView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2113,7 +2115,7 @@ type TabViewElement(props:IProperty list) =
 
 
 type TextFieldElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TextField) props =
         props |> Interop.getValue<string> "text"        |> Option.iter (fun v -> if element.Text.ToString()<>v then element.Text <- v)
@@ -2126,24 +2128,24 @@ type TextFieldElement(props:IProperty list) =
         props |> Interop.getValue<int> "selectedStart"  |> Option.iter (fun v -> element.SelectedStart <- v)
         props |> Interop.getValue<CursorVisibility> "desiredCursorVisibility"   |> Option.iter (fun v -> element.DesiredCursorVisibility <- v)
         // onTextChanging
-        props 
-        |> Interop.getValue<TextChangingEventArgs->unit> "onTextChanging" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TextChangingEventArgs->unit> "onTextChanging"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanging" element
             element.add_TextChanging v
         )
         // onTextChanging
-        props 
-        |> Interop.getValue<string->unit> "onTextChangingString" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string->unit> "onTextChangingString"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanging" element
             let action (ev:TextChangingEventArgs) = v (ev.NewText |> Interop.str); ev.Cancel <- false
             element.add_TextChanging action
         )
         // onTextChanged
-        props 
-        |> Interop.getValue<string->unit> "onTextChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string->unit> "onTextChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanged" element
             let action ustr = v (ustr |> Interop.str)
             element.add_TextChanged action
@@ -2156,16 +2158,16 @@ type TextFieldElement(props:IProperty list) =
         props |> Interop.getValue<bool> "canFocus"      |> Option.iter (fun v -> element.CanFocus <- true)
 
         // onTextChanging
-        props 
-        |> Interop.getValue<TextChangingEventArgs->unit> "onTextChanging" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<TextChangingEventArgs->unit> "onTextChanging"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanging" element
         )
-        
+
         // onTextChanged
-        props 
-        |> Interop.getValue<string->unit> "onTextChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string->unit> "onTextChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanged" element
         )
 
@@ -2194,7 +2196,7 @@ type TextFieldElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TextField
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2206,7 +2208,7 @@ type TextFieldElement(props:IProperty list) =
 
 
 type TextValidateFieldElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TextValidateField) props =
         props |> Interop.getValue<TextValidateProviders.ITextValidateProvider> "provider" |> Option.iter (fun v -> element.Provider <- v)
@@ -2239,7 +2241,7 @@ type TextValidateFieldElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TextValidateField
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2251,7 +2253,7 @@ type TextValidateFieldElement(props:IProperty list) =
 
 
 type TextViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TextView) props =
         props |> Interop.getValue<string> "text"                |> Option.iter (fun v -> if Checker.textChanged element v then element.Text <- v)
@@ -2274,9 +2276,9 @@ type TextViewElement(props:IProperty list) =
         props |> Interop.getValue<bool> "used"                  |> Option.iter (fun v -> element.Used <- v)
         props |> Interop.getValue<CursorVisibility> "desiredCursorVisibility" |> Option.iter (fun v -> element.DesiredCursorVisibility <- v)
         // onTextChanged
-        props 
-        |> Interop.getValue<string->unit> "onTextChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<string->unit> "onTextChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanged" element
             let action () = v (element.Text |> Interop.str)
             element.add_TextChanged action
@@ -2293,9 +2295,9 @@ type TextViewElement(props:IProperty list) =
         props |> Interop.getValue<bool> "used"                  |> Option.iter (fun v -> element.Used <- true)
         props |> Interop.getValue<int> "tabWidth"               |> Option.iter (fun v -> element.TabWidth <- 4)
         // onTextChanged
-        props 
-        |> Interop.getValue<unit->unit> "onTextChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<unit->unit> "onTextChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TextChanged" element
         )
 
@@ -2323,7 +2325,7 @@ type TextViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TextView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2335,14 +2337,14 @@ type TextViewElement(props:IProperty list) =
 
 
 type TimeFieldElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TimeField) props =
         props |> Interop.getValue<TimeSpan> "time" |> Option.iter (fun v -> element.Time <- v)
         props |> Interop.getValue<bool> "isShortFormat" |> Option.iter (fun v -> element.IsShortFormat <- v)
         // onDateChanged
-        props 
-        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<TimeSpan>->unit> "onTimeChanged" 
+        props
+        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<TimeSpan>->unit> "onTimeChanged"
         |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TimeChanged" element
             element.add_TimeChanged v
@@ -2350,8 +2352,8 @@ type TimeFieldElement(props:IProperty list) =
 
     let removeProps (element:TimeField) props =
         // onDateChanged
-        props 
-        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<TimeSpan>->unit> "onTimeChanged" 
+        props
+        |> Interop.getValue<Terminal.Gui.DateTimeEventArgs<TimeSpan>->unit> "onTimeChanged"
         |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "TimeChanged" element
         )
@@ -2364,13 +2366,13 @@ type TimeFieldElement(props:IProperty list) =
         Diagnostics.Debug.WriteLine ($"{this.name} created!")
         #endif
         this.parent <- parent
-        let el = 
+        let el =
             match props |> Interop.getValue<TimeSpan> "time" with
             | None ->
                 new TimeField()
-            | Some time -> 
+            | Some time ->
                 new TimeField(time)
-        
+
         parent |> Option.iter (fun p -> p.Add el)
         ViewElement.setProps el props
         setProps el props
@@ -2386,7 +2388,7 @@ type TimeFieldElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TimeField
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2398,7 +2400,7 @@ type TimeFieldElement(props:IProperty list) =
 
 
 type TreeViewElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:TreeView) props =
         props |> Interop.getValue<ITreeBuilder<Trees.ITreeNode>> "treeBuilder"      |> Option.iter (fun v -> element.TreeBuilder <- v)
@@ -2416,16 +2418,16 @@ type TreeViewElement(props:IProperty list) =
         props |> Interop.getValue<string list> "items"                              |> Option.iter (fun v -> v |> List.iter (fun text -> element.AddObject(TreeNode(text))))
         props |> Interop.getValue<ITreeNode list> "nodes"                           |> Option.iter (fun v -> v |> List.iter element.AddObject)
         // onObjectActivated
-        props 
-        |> Interop.getValue<ObjectActivatedEventArgs<ITreeNode>->unit> "onObjectActivated" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<ObjectActivatedEventArgs<ITreeNode>->unit> "onObjectActivated"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "ObjectActivated" element
             element.add_ObjectActivated v
         )
         // onSelectionChanged
-        props 
-        |> Interop.getValue<SelectionChangedEventArgs<ITreeNode>->unit> "onSelectionChanged" 
-        |> Option.iter (fun v -> 
+        props
+        |> Interop.getValue<SelectionChangedEventArgs<ITreeNode>->unit> "onSelectionChanged"
+        |> Option.iter (fun v ->
             Interop.removeEventHandlerIfNecessary "SelectionChanged" element
             element.SelectionChanged.Add v
         )
@@ -2457,7 +2459,7 @@ type TreeViewElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> TreeView
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2469,7 +2471,7 @@ type TreeViewElement(props:IProperty list) =
 
 
 type DialogElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:Dialog) props =
         ()
@@ -2501,7 +2503,7 @@ type DialogElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> Dialog
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2513,7 +2515,7 @@ type DialogElement(props:IProperty list) =
 
 
 type FileDialogElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:FileDialog) props =
         ()
@@ -2545,7 +2547,7 @@ type FileDialogElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> FileDialog
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2557,7 +2559,7 @@ type FileDialogElement(props:IProperty list) =
 
 
 type SaveDialogElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:SaveDialog) props =
         ()
@@ -2589,7 +2591,7 @@ type SaveDialogElement(props:IProperty list) =
 
         canUpdateView && canUpdateElement
 
-    override this.update prevElement oldProps = 
+    override this.update prevElement oldProps =
         let element = prevElement :?> SaveDialog
         let (changedProps,removedProps) = Interop.filterProps oldProps props
         ViewElement.removeProps prevElement removedProps
@@ -2601,7 +2603,7 @@ type SaveDialogElement(props:IProperty list) =
 
 
 type OpenDialogElement(props:IProperty list) =
-    inherit TerminalElement(props) 
+    inherit TerminalElement(props)
 
     let setProps (element:OpenDialog) props =
         ()
@@ -2641,6 +2643,3 @@ type OpenDialogElement(props:IProperty list) =
         ViewElement.setProps prevElement changedProps
         setProps element changedProps
         this.element <- prevElement
-
-
-
